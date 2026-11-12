@@ -24,5 +24,19 @@ greet()
 
 print(name)
 
+#Python's LEGB name-resolution rule
+name = "Global"
+
+def outer():
+    name = "Enclosing"
+
+    def inner():
+        name = "Local"
+        print(name)
+
+    inner()
+
+outer()
+
 
 

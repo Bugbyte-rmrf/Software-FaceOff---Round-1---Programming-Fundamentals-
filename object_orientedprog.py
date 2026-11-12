@@ -1,3 +1,4 @@
+#Classes
 class Car:
     def __init__(self, brand, color):
         self.brand = brand
@@ -12,6 +13,26 @@ car2 = Car("BMW", "Black")
 
 car1.drive()
 car2.drive()
+
+#Instance attribute
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+#Class attribute
+class Dog:
+    species = "Canis familiaris"
+
+    def __init__(self, name):
+        self.name = name
+
+
+dog1 = Dog("Rex")
+dog2 = Dog("Milo")
+
+print(dog1.species)
+print(dog2.species)
+
 
 #Encapsulation
 class BankAccount:

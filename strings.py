@@ -14,6 +14,15 @@ print(word[0:3])
 print(word[2:])
 print(word[:4]) 
 
+# Strings are Immutable
+word = "PYTHON"
+word[0] = "J"
+
+word = "PYTHON"
+word = "J" + word[1:]
+
+print(word)
+
 #Common string operations
 text = "  Hello World  "
 

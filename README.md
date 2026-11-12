@@ -33,7 +33,7 @@ Programming is the process of giving a computer precise instructions to
 perform a task. A program receives or accesses data, processes it
 according to rules, and produces a result.
 
-A useful mental model is:
+Programming terms:
 
 1.  **Input** --- data enters the program.
 2.  **State** --- the program stores information in variables and data
@@ -45,111 +45,6 @@ A useful mental model is:
 5.  **Repetition** --- loops or recursion repeat work.
 6.  **Output** --- the program displays, saves, returns or transmits a
     result.
-
-For example, an even-or-odd checker:
-
-``` python
-number = int(input("Enter a whole number: "))
-
-if number % 2 == 0:
-    print(number, "is even.")
-else:
-    print(number, "is odd.")
-```
-
-This small program demonstrates the whole model:
-
--   `input()` receives text from the user.
--   `int()` converts the text to an integer.
--   `number` stores the value.
--   `%` calculates a remainder.
--   `if` and `else` make a decision.
--   `print()` displays the result.
-
-## 1.1 The programming fundamentals roadmap
-
-This guide covers nine core areas:
-
-  -----------------------------------------------------------------------
-  Area                                Main question
-  ----------------------------------- -----------------------------------
-  Values and types                    What kind of data is the program
-                                      handling?
-
-  Variables and scope                 How is data named, stored and
-                                      accessed?
-
-  Functions and parameters            How can work be packaged and
-                                      reused?
-
-  Strings                             How is text represented and
-                                      manipulated?
-
-  Data structures                     How should collections of data be
-                                      organized?
-
-  Big O                               How does the cost of an algorithm
-                                      grow?
-
-  Recursion                           How can a problem be solved through
-                                      smaller versions of itself?
-
-  How code runs                       How does source code become
-                                      executed instructions?
-
-  OOP                                 How can software be organized
-                                      around objects and their behaviour?
-  -----------------------------------------------------------------------
-
-## 1.2 Working environment: VS Code on Ubuntu/Linux
-
-The examples use Python 3.
-
-Check that Python 3 is installed:
-
-``` bash
-python3 --version
-```
-
-Run a Python file from the integrated VS Code terminal:
-
-``` bash
-python3 filename.py
-```
-
-On some Linux installations, the command `python` is not configured. If
-`python` produces a "command not found" message, use `python3`. An
-optional Ubuntu package, `python-is-python3`, makes `python` point to
-Python 3, but it is not required.
-
-Useful terminal commands:
-
-``` bash
-pwd                 # Show the current directory
-ls                  # List files
-cd "folder name"    # Move into a directory
-python3 --version   # Show Python version
-python3 file.py     # Run a Python script
-```
-
-A suggested project layout:
-
-``` text
-Software engineering faceoff/
-├── 02_even_odd.py
-├── 03_calculator.py
-├── 04_scope.py
-├── 05_functions.py
-├── 06_string_analyzer.py
-├── 07_data_structures.py
-├── 08_big_o.py
-├── 09_recursion.py
-├── 10_bytecode.py
-└── 11_oop.py
-```
-
-The numbering reflects the practical sequence used in the lessons. The
-first practical is `02_even_odd.py`.
 
 ------------------------------------------------------------------------
 
@@ -171,8 +66,7 @@ True
 A **data type** classifies a value and determines the kinds of
 operations that make sense for it.
 
-Python is dynamically typed: you do not normally declare a variable's
-type before assigning a value. The type belongs to the object, and a
+The type belongs to the object, and a
 name can later refer to an object of a different type.
 
 ``` python
@@ -188,13 +82,6 @@ print(type(value))  # <class 'float'>
 
 ## 2.2 Common Python built-in types
 
-  Type        Description                     Example
-  ----------- ------------------------------- -----------------
-  `int`       Integer / whole number          `25`, `-8`, `0`
-  `float`     Floating-point number           `3.14`, `-0.5`
-  `bool`      Truth value                     `True`, `False`
-  `str`       Text / sequence of characters   `"Python"`
-  `complex`   Complex number                  `2 + 3j`
 
 Inspect types using `type()`:
 
@@ -212,14 +99,6 @@ print(type(name))
 print(type(complex_number))
 ```
 
-Python does not have a separate built-in `char` type like some
-languages. A single character is a string of length one:
-
-``` python
-letter = "A"
-print(type(letter))  # <class 'str'>
-print(len(letter))   # 1
-```
 
 ## 2.3 Type conversion (type casting)
 
@@ -248,24 +127,8 @@ Not every conversion is valid:
 int("hello")    # Raises ValueError
 ```
 
-A common source of bugs is forgetting that `input()` returns a string:
-
-``` python
-age = input("Enter your age: ")  # age is str
-age = int(age)                   # convert to int
-```
 
 ## 2.4 Arithmetic operators
-
-  Operator   Meaning                 Example   Result
-  ---------- -------------------- ---------- --------
-  `+`        Addition                `5 + 2`      `7`
-  `-`        Subtraction             `5 - 2`      `3`
-  `*`        Multiplication          `5 * 2`     `10`
-  `/`        True division           `5 / 2`    `2.5`
-  `//`       Floor division         `5 // 2`      `2`
-  `%`        Modulo / remainder      `5 % 2`      `1`
-  `**`       Exponentiation         `5 ** 2`     `25`
 
 ### True division and floor division
 
@@ -311,28 +174,9 @@ else:
 -   If `number % 2 == 0`, the number is even.
 -   Otherwise, it is odd.
 
-Modulo is also useful for periodic behaviour, such as checking every
-fifth item or wrapping an index around a fixed range.
-
-Python's modulo result has the sign of the divisor:
-
-``` python
-print(-7 % 3)  # 2
-print(7 % -3)  # -2
-```
-
-Other programming languages may define negative remainder differently,
-so be careful when transferring assumptions between languages.
-
 ### Division by zero
 
 Python raises an exception when dividing by zero:
-
-``` python
-print(10 / 0)   # ZeroDivisionError
-print(10 // 0)  # ZeroDivisionError
-print(10 % 0)   # ZeroDivisionError
-```
 
 Handle a possible zero divisor explicitly:
 
@@ -360,12 +204,17 @@ Comparison operators produce Boolean values:
 
   Operator   Meaning
   ---------- --------------------------
-  `==`       Equal to
-  `!=`       Not equal to
-  `>`        Greater than
-  `<`        Less than
-  `>=`       Greater than or equal to
-  `<=`       Less than or equal to
+  `==`- Equal to
+
+  `!=` - Not equal to
+
+  `>` - Greater than
+
+  `<` - Less than
+
+  `>=` - Greater than or equal to
+
+  `<=` - Less than or equal to
 
 ``` python
 age = 20
@@ -426,46 +275,6 @@ Enter a whole number: 24
 This exercise combines input, conversion, variables, modulo, conditions
 and output.
 
-## 2.7 Practical: `03_calculator.py`
-
-``` python
-# 03_calculator.py
-
-first_number = float(input("Enter first number: "))
-operator = input("Enter operator (+, -, *, /): ")
-second_number = float(input("Enter second number: "))
-
-if operator == "+":
-    result = first_number + second_number
-elif operator == "-":
-    result = first_number - second_number
-elif operator == "*":
-    result = first_number * second_number
-elif operator == "/":
-    if second_number == 0:
-        print("Error: Cannot divide by zero.")
-        result = None
-    else:
-        result = first_number / second_number
-else:
-    print("Invalid operator.")
-    result = None
-
-if result is not None:
-    print("Result:", result)
-```
-
-Concepts practised:
-
--   Variables and assignment
--   `float()` conversion
--   User input
--   Comparison operators
--   `if`, `elif` and `else`
--   Arithmetic
--   Nested conditions
--   Basic error prevention
-
 ------------------------------------------------------------------------
 
 # 3. Variables and Scope
@@ -480,16 +289,7 @@ name = "Alex"
 age = 25
 ```
 
-A useful mental model is that a variable is a label or reference, not
-necessarily a physical box containing the value.
-
-Python is dynamically typed, so a name can be reassigned to an object of
-another type:
-
-``` python
-x = 10
-x = "Ten"
-```
+A variable is also a label or reference, not a physical box containing the value.
 
 ## 3.2 What is scope?
 
@@ -531,26 +331,9 @@ def greet():
 greet()
 ```
 
-A function can read a global name. To reassign a module-level global
-name inside a function, use the `global` statement:
-
-``` python
-counter = 0
-
-def increase():
-    global counter
-    counter += 1
-
-increase()
-print(counter)  # 1
-```
-
-Use `global` sparingly. Passing data as parameters and returning results
-generally makes functions easier to test and understand.
-
 ### Shadowing
 
-Shadowing occurs when a name in an inner scope has the same name as a
+**Shadowing** occurs when a name in an inner scope has the same name as a
 name in an outer scope:
 
 ``` python
@@ -610,48 +393,6 @@ Local
 
 The local name is found first.
 
-The `nonlocal` keyword can be used in a nested function to reassign a
-name in an enclosing function scope:
-
-``` python
-def outer():
-    count = 0
-
-    def inner():
-        nonlocal count
-        count += 1
-
-    inner()
-    print(count)
-
-outer()  # 1
-```
-
-## 3.4 Practical: `04_scope.py`
-
-``` python
-# 04_scope.py
-
-score = 100
-
-def calculate():
-    score = 50
-    print("Inside:", score)
-
-calculate()
-
-print("Outside:", score)
-```
-
-Expected output:
-
-``` text
-Inside: 50
-Outside: 100
-```
-
-The local `score` shadows the global name inside the function. It does
-not overwrite the global variable.
 
 ------------------------------------------------------------------------
 
@@ -671,8 +412,8 @@ greet()
 
 -   `def` begins a function definition.
 -   `greet` is the function name.
--   Parentheses contain parameters, if any.
--   The indented block is the function body.
+-   `Parentheses` contain parameters, if any.
+-   The `indented block` is the function body.
 -   `greet()` calls the function.
 
 ## 4.2 Parameters versus arguments
@@ -810,23 +551,6 @@ print(values)  # [10, 20, 100]
 The function and caller refer to the same list object, so the in-place
 mutation is visible to both.
 
-## 4.7 Practical: `05_functions.py`
-
-``` python
-# 05_functions.py
-
-def calculate_area(length, width):
-    return length * width
-
-area = calculate_area(10, 5)
-print("Area:", area)
-```
-
-Extend the program by creating separate functions for addition,
-subtraction, multiplication and division. Each function should accept
-two numbers and return a result. Consider how the division function
-should handle a zero divisor.
-
 ------------------------------------------------------------------------
 
 # 5. Strings
@@ -931,18 +655,9 @@ print(f"My name is {name} and I am {age} years old.")
 
 ## 5.7 Repeated concatenation and efficiency
 
-This pattern can be inefficient for building large strings:
-
-``` python
-result = ""
-
-for i in range(1000):
-    result += str(i)
-```
-
 Because strings are immutable, repeated concatenation may create new
 strings and repeatedly copy existing content. In a loop, this can lead
-to quadratic total work.
+to alot of work.
 
 A common alternative is to collect pieces in a list and join them:
 
@@ -957,25 +672,6 @@ result = "".join(parts)
 
 `str.join()` combines an iterable of strings into one string. It is
 generally the preferred pattern when building a string from many pieces.
-`io.StringIO` is another option for more stream-like construction.
-
-## 5.8 Practical: `06_string_analyzer.py`
-
-``` python
-# 06_string_analyzer.py
-
-sentence = input("Enter a sentence: ")
-
-print("Characters:", len(sentence))
-print("Uppercase:", sentence.upper())
-print("Lowercase:", sentence.lower())
-print("Words:", len(sentence.split()))
-print("Reversed:", sentence[::-1])
-print("Occurrences of 'a':", sentence.lower().count("a"))
-```
-
-Try empty input, a sentence with multiple spaces, uppercase letters and
-punctuation. Consider what each operation counts.
 
 ------------------------------------------------------------------------
 
@@ -986,7 +682,7 @@ punctuation. Consider what each operation counts.
 A **data structure** is a way of organizing and storing data so that it
 can be accessed, updated and processed.
 
-Different structures have different strengths. Choosing an appropriate
+Choosing an appropriate
 structure can make a program simpler and more efficient.
 
 ## 6.2 Lists
@@ -1009,20 +705,7 @@ A list can contain mixed types:
 items = ["Alex", 25, True, 3.14]
 ```
 
-Typical list operation complexities:
-
-  Operation               Example                Typical complexity
-  ----------------------- ---------------------- --------------------
-  Index access            `items[0]`             O(1)
-  Append to end           `items.append(5)`      Amortized O(1)
-  Search by value         `5 in items`           O(n)
-  Insert near beginning   `items.insert(0, 5)`   O(n)
-  Remove by value         `items.remove(5)`      O(n)
-
-These are typical complexities for Python's dynamic-array-based list
-implementation.
-
-## 6.3 Stacks --- LIFO
+## 6.3 Stacks --- Last In First Out
 
 A **stack** follows Last In, First Out (LIFO). The most recently added
 item is removed first.
@@ -1041,6 +724,7 @@ stack.append("C")
 
 print(stack.pop())  # C
 print(stack.pop())  # B
+print(stack.pop())  # A
 ```
 
 Common uses:
@@ -1060,7 +744,7 @@ The usual stack operations are:
 In Python, `append()` and `pop()` at the end of a list are commonly used
 for stack operations.
 
-## 6.4 Queues --- FIFO
+## 6.4 Queues --- First In First Out
 
 A **queue** follows First In, First Out (FIFO). The earliest item added
 is removed first.
@@ -1081,11 +765,8 @@ queue.append("C")
 
 print(queue.popleft())  # A
 print(queue.popleft())  # B
+print(queue.popleft())  # C
 ```
-
-Avoid repeatedly using `list.pop(0)` for a large queue: removing the
-first element from a list requires shifting the remaining elements and
-is O(n). A deque supports efficient operations at both ends.
 
 Common uses:
 
@@ -1119,14 +800,6 @@ A dictionary's keys must be hashable. Strings, integers and many
 immutable objects can be keys. A list cannot be a dictionary key because
 it is mutable and unhashable.
 
-Typical average-case complexities:
-
--   Lookup by key: O(1).
--   Insert: O(1).
--   Delete by key: O(1).
-
-Worst-case behaviour can be worse, but average-case O(1) is the standard
-expectation for normal dictionary operations.
 
 ### How a hash table works
 
@@ -1180,51 +853,6 @@ print(students_a - students_b)  # Difference
 -   **Union (`|`):** all unique elements from either set.
 -   **Difference (`-`):** elements in the first set but not the second.
 
-Membership testing in a set is typically O(1) on average.
-
-## 6.7 Choosing a data structure
-
-  Requirement                           Suitable structure
-  ------------------------------------- --------------------
-  Ordered collection that can change    List
-  Last-in, first-out processing         Stack
-  First-in, first-out processing        Queue / `deque`
-  Lookup by a key                       Dictionary
-  Unique values and membership checks   Set
-
-The best choice depends on the operations the program performs most
-often.
-
-## 6.8 Practical: `07_data_structures.py`
-
-``` python
-# 07_data_structures.py
-
-from collections import deque
-
-# STACK: Last In, First Out
-stack = []
-
-stack.append("Task 1")
-stack.append("Task 2")
-stack.append("Task 3")
-
-print("Stack:", stack)
-print("Removed from stack:", stack.pop())
-
-# QUEUE: First In, First Out
-queue = deque()
-
-queue.append("Customer 1")
-queue.append("Customer 2")
-queue.append("Customer 3")
-
-print("Queue:", queue)
-print("Served:", queue.popleft())
-```
-
-The stack removes `Task 3` because it was added last. The queue serves
-`Customer 1` because it was added first.
 
 ------------------------------------------------------------------------
 
@@ -1400,36 +1028,6 @@ sequence of appends, the average cost per append remains O(1) amortized.
 
 Amortized analysis considers the cost across a sequence of operations
 rather than judging only the most expensive individual operation.
-
-## 7.6 Practical: `08_big_o.py`
-
-``` python
-# 08_big_o.py
-
-def linear_search(numbers, target):
-    for index in range(len(numbers)):
-        if numbers[index] == target:
-            return index
-
-    return -1
-
-
-def find_all_pairs(numbers):
-    for first in numbers:
-        for second in numbers:
-            print(first, second)
-
-
-data = [10, 20, 30, 40, 50]
-
-print("Search result:", linear_search(data, 30))
-
-print("All pairs:")
-find_all_pairs(data)
-```
-
--   `linear_search()` is O(n) because it may inspect every item.
--   `find_all_pairs()` is O(n²) because it examines every ordered pair.
 
 ------------------------------------------------------------------------
 
@@ -2096,54 +1694,6 @@ print(calculator.add(2, 3, 4))  # 9
 Other Python techniques include `*args`, `**kwargs`, singledispatch and
 explicit type checks. These are not identical to Java-style compile-time
 overload resolution.
-
-## 10.6 Practical: `11_oop.py`
-
-Build a small employee system:
-
--   Create a parent class called `Employee`.
--   Give it `name` and `salary` attributes.
--   Add a `display_details()` method.
--   Create a child class called `Manager`.
--   Give `Manager` an additional `department` attribute.
--   Override `display_details()` in `Manager`.
--   Use `super()` to reuse the parent's initialization.
-
-Starter structure:
-
-``` python
-# 11_oop.py
-
-class Employee:
-    def __init__(self, name, salary):
-        self.name = name
-        self.salary = salary
-
-    def display_details(self):
-        print(f"Name: {self.name}")
-        print(f"Salary: {self.salary}")
-
-
-class Manager(Employee):
-    def __init__(self, name, salary, department):
-        super().__init__(name, salary)
-        self.department = department
-
-    def display_details(self):
-        super().display_details()
-        print(f"Department: {self.department}")
-
-
-employee = Employee("Alex", 50000)
-manager = Manager("Jordan", 75000, "Engineering")
-
-employee.display_details()
-print("---")
-manager.display_details()
-```
-
-This demonstrates classes, objects, instance attributes, methods,
-inheritance, `super()` and method overriding.
 
 ------------------------------------------------------------------------
 

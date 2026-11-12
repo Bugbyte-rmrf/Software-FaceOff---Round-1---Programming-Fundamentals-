@@ -28,8 +28,9 @@ print(10 / 0)
 
 
 #Type conversion
-age = "25"
+age_text = "25"
 
 age_number = int(age)
 
 print(age_number + 5)
+

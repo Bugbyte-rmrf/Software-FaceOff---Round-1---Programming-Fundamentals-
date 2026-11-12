@@ -9,7 +9,13 @@ def greet(name):
     print("Hello", name)
 
 # "Alex" is an argument
-greet("Alex")     
+greet("Alex")   
+
+# Function accept more than one parameter
+def add(a, b):
+    return a + b
+
+print(add(10, 5))
 
 #Return values
 def add(a, b):
