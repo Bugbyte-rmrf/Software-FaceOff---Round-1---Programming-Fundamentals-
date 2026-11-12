@@ -20,9 +20,8 @@
 8.  [Recursion](#8-recursion)
 9.  [How Code Runs](#9-how-code-runs)
 10. [Object-Oriented Programming](#10-object-oriented-programming)
-11. [Practical File Index](#11-practical-file-index)
-12. [Face-Off Revision Checklist](#12-face-off-revision-checklist)
-13. [Common Errors and Debugging](#13-common-errors-and-debugging)
+11. [Face-Off Revision Checklist](#12-face-off-revision-checklist)
+12. [Common Errors and Debugging](#13-common-errors-and-debugging)
 14. [Glossary](#14-glossary)
 
 ------------------------------------------------------------------------
@@ -1697,63 +1696,13 @@ overload resolution.
 
 ------------------------------------------------------------------------
 
-# 11. Practical File Index
 
-Use this table to keep track of the scripts in the study sequence.
-
-  -------------------------------------------------------------------------
-  File                      Topic                   Main practice
-  ------------------------- ----------------------- -----------------------
-  `02_even_odd.py`          Values, types and       Determine whether an
-                            conditions              integer is even or odd
-
-  `03_calculator.py`        Types and operators     Build a basic
-                                                    calculator with
-                                                    division-by-zero
-                                                    protection
-
-  `04_scope.py`             Variables and scope     Observe local and
-                                                    global variables
-
-  `05_functions.py`         Functions               Write reusable
-                                                    functions that return
-                                                    values
-
-  `06_string_analyzer.py`   Strings                 Inspect, format and
-                                                    manipulate text
-
-  `07_data_structures.py`   Data structures         Implement a stack and
-                                                    queue
-
-  `08_big_o.py`             Algorithm analysis      Compare linear and
-                                                    quadratic work
-
-  `09_recursion.py`         Recursion               Implement recursive
-                                                    calculations
-
-  `10_bytecode.py`          Code execution          Inspect Python bytecode
-                                                    using `dis`
-
-  `11_oop.py`               OOP                     Build an employee and
-                                                    manager class hierarchy
-  -------------------------------------------------------------------------
-
-Run any script from the project directory:
-
-``` bash
-python3 02_even_odd.py
-```
-
-Replace the filename with the script you want to run.
-
-------------------------------------------------------------------------
-
-# 12. Face-Off Revision Checklist
+# 11. Face-Off Revision Checklist
 
 Use this as a self-assessment. You should be able to explain each
 concept in your own words and demonstrate it in Python.
 
-## 12.1 Values and types
+## 11.1 Values and types
 
 -   [ ] Explain what a value and data type are.
 -   [ ] Identify `int`, `float`, `bool`, `str` and `complex`.
@@ -1765,7 +1714,7 @@ concept in your own words and demonstrate it in Python.
 -   [ ] Explain what happens when a program divides by zero.
 -   [ ] Use comparison and logical operators.
 
-## 12.2 Variables and scope
+## 11.2 Variables and scope
 
 -   [ ] Explain what a variable name refers to.
 -   [ ] Explain local and global scope.
@@ -1774,7 +1723,7 @@ concept in your own words and demonstrate it in Python.
 -   [ ] Explain `global` and `nonlocal`.
 -   [ ] Predict which variable a function will access.
 
-## 12.3 Functions and parameters
+## 11.3 Functions and parameters
 
 -   [ ] Define and call a function.
 -   [ ] Explain parameters versus arguments.
@@ -1785,7 +1734,7 @@ concept in your own words and demonstrate it in Python.
 -   [ ] Explain Python's object-sharing / pass-by-assignment behaviour.
 -   [ ] Distinguish rebinding a parameter from mutating an object.
 
-## 12.4 Strings
+## 11.4 Strings
 
 -   [ ] Explain strings as ordered sequences.
 -   [ ] Index a string.
@@ -1796,7 +1745,7 @@ concept in your own words and demonstrate it in Python.
 -   [ ] Explain why repeated concatenation can be inefficient.
 -   [ ] Use a list and `join()` to build a string.
 
-## 12.5 Data structures
+## 11.5 Data structures
 
 -   [ ] Explain lists and their common operations.
 -   [ ] Explain LIFO and implement a stack.
@@ -1808,7 +1757,7 @@ concept in your own words and demonstrate it in Python.
 -   [ ] Explain sets, uniqueness, intersection, union and difference.
 -   [ ] Choose a suitable data structure for a given task.
 
-## 12.6 Big O
+## 11.6 Big O
 
 -   [ ] Explain time complexity and space complexity.
 -   [ ] Explain why Big O is about growth rather than seconds.
@@ -1819,7 +1768,7 @@ concept in your own words and demonstrate it in Python.
 -   [ ] Explain binary search and its sorted-input requirement.
 -   [ ] Explain amortized O(1) list append.
 
-## 12.7 Recursion
+## 11.7 Recursion
 
 -   [ ] Define recursion.
 -   [ ] Identify the base case.
@@ -1832,7 +1781,7 @@ concept in your own words and demonstrate it in Python.
 -   [ ] Explain memoization.
 -   [ ] Compare recursive and iterative approaches.
 
-## 12.8 How code runs
+## 11.8 How code runs
 
 -   [ ] Explain source code and machine code.
 -   [ ] Explain compilation at a high level.
@@ -1844,7 +1793,7 @@ concept in your own words and demonstrate it in Python.
 -   [ ] Explain that different language runtimes can execute code
     differently.
 
-## 12.9 OOP
+## 11.9 OOP
 
 -   [ ] Explain the difference between a class and an object.
 -   [ ] Create a class and instantiate objects.
@@ -1973,121 +1922,6 @@ is missing or its recursive step does not make progress.
 
 Always check that a recursive call moves toward a reachable base case.
 
-## 13.9 A reliable debugging routine
-
-1.  Read the final line of the traceback for the exception type and
-    message.
-2.  Find the file name and line number in the traceback.
-3.  Inspect the reported line and the values used by it.
-4.  Check types, variable names, scope, indexes and assumptions.
-5.  Make one focused change.
-6.  Run the program again.
-7.  If the issue remains, share the full traceback and the relevant
-    code.
-
-When asking for debugging help, include the command used to run the
-file, the complete error message and the smallest relevant code section.
-
-------------------------------------------------------------------------
-
-# 14. Glossary
-
-  -----------------------------------------------------------------------
-  Term                                Meaning
-  ----------------------------------- -----------------------------------
-  Algorithm                           A defined sequence of steps for
-                                      solving a problem
-
-  Argument                            A value supplied to a function call
-
-  Attribute                           Data associated with an object
-
-  Base case                           A condition that stops recursion
-
-  Big O                               Notation describing asymptotic
-                                      growth
-
-  Bytecode                            Intermediate instructions executed
-                                      by a Python runtime
-
-  Class                               A definition used to create objects
-
-  Collision                           A situation where different hash
-                                      keys map to the same table location
-
-  Compiler                            Software that translates source
-                                      code into another representation
-
-  Data structure                      A way to organize and store data
-
-  Encapsulation                       Grouping data and behaviour and
-                                      controlling access to state
-
-  Exception                           An event representing an error or
-                                      unusual condition
-
-  Function                            A reusable unit of code
-
-  Hash function                       A function that maps a hashable key
-                                      to a hash value
-
-  Inheritance                         A mechanism for extending or
-                                      reusing another class's behaviour
-
-  Instance                            An object created from a class
-
-  Interpreter                         A runtime that executes a program's
-                                      instructions
-
-  Immutable                           Not changeable in place after
-                                      creation
-
-  LIFO                                Last In, First Out
-
-  Local scope                         The scope belonging to the current
-                                      function
-
-  Memoization                         Caching results to avoid repeated
-                                      computation
-
-  Method                              A function associated with a class
-                                      or object
-
-  Mutable                             Capable of being changed in place
-
-  Object                              An instance with state and
-                                      behaviour
-
-  Parameter                           A name in a function definition
-
-  Polymorphism                        Different objects supporting a
-                                      common operation with different
-                                      behaviour
-
-  Queue                               A FIFO data structure
-
-  Recursion                           A function solving a problem by
-                                      calling itself
-
-  Return value                        A value sent back by a function
-
-  Scope                               The region in which a name can be
-                                      accessed
-
-  Side effect                         An observable change caused by
-                                      executing code
-
-  Stack                               A LIFO data structure
-
-  String                              An immutable sequence of text
-                                      characters
-
-  Variable                            A name that refers to an object
-
-  Virtual machine                     A runtime environment that executes
-                                      an intermediate instruction set
-  -----------------------------------------------------------------------
-
 ------------------------------------------------------------------------
 
 ## Final study advice
@@ -2105,7 +1939,3 @@ For the Software Engineering Face-Off, prioritize being able to read
 unfamiliar code, predict output, identify errors, explain complexity,
 and justify design choices.
 
-**This README covers the study material from the big-picture
-introduction through Object-Oriented Programming. The Student Management
-System mini-project is the next integration exercise after completing
-this material.**
