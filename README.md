@@ -22,7 +22,6 @@
 10. [Object-Oriented Programming](#10-object-oriented-programming)
 11. [Face-Off Revision Checklist](#12-face-off-revision-checklist)
 12. [Common Errors and Debugging](#13-common-errors-and-debugging)
-14. [Glossary](#14-glossary)
 
 ------------------------------------------------------------------------
 
@@ -1809,12 +1808,12 @@ concept in your own words and demonstrate it in Python.
 
 ------------------------------------------------------------------------
 
-# 13. Common Errors and Debugging
+# 12. Common Errors and Debugging
 
 Errors are part of programming. Read the exception type and the
 traceback instead of guessing.
 
-## 13.1 `NameError`
+## 12.1 `NameError`
 
 A name is used before it has been defined or is not available in the
 current scope.
@@ -1825,7 +1824,7 @@ print(username)
 
 If `username` has not been defined, Python raises `NameError`.
 
-## 13.2 `TypeError`
+## 12.2 `TypeError`
 
 An operation is applied to an incompatible type.
 
@@ -1841,7 +1840,7 @@ age = int(age)
 print(age + 5)
 ```
 
-## 13.3 `ValueError`
+## 12.3 `ValueError`
 
 The type may be appropriate, but the value cannot be converted or
 accepted.
@@ -1859,7 +1858,7 @@ except ValueError:
     print("Please enter a valid whole number.")
 ```
 
-## 13.4 `ZeroDivisionError`
+## 12.4 `ZeroDivisionError`
 
 A division or modulo operation uses zero as the divisor.
 
@@ -1869,7 +1868,7 @@ result = 10 / 0
 
 Check the divisor before dividing or catch `ZeroDivisionError`.
 
-## 13.5 `IndexError`
+## 12.5 `IndexError`
 
 A sequence is accessed using an index outside its valid range.
 
@@ -1880,7 +1879,7 @@ print(numbers[5])  # IndexError
 
 Valid list indexes for this list are `0` and `1`, or `-1` and `-2`.
 
-## 13.6 `KeyError`
+## 12.6 `KeyError`
 
 A dictionary is accessed using a key that does not exist.
 
@@ -1895,7 +1894,7 @@ Use `.get()` when a missing key is expected:
 print(student.get("age", "Not provided"))
 ```
 
-## 13.7 `IndentationError`
+## 12.7 `IndentationError`
 
 Python uses indentation to define blocks.
 
@@ -1915,7 +1914,7 @@ if True:
 
 Use consistent indentation, typically four spaces per level.
 
-## 13.8 `RecursionError`
+## 12.8 `RecursionError`
 
 A recursive function makes too many calls, often because its base case
 is missing or its recursive step does not make progress.
